@@ -119,5 +119,10 @@ ElementType Retrieve(Position P)
 
 List MakeEmpty(List L)
 {
-	return NULL;
+	if(L != NULL)
+		DeleteList(L);
+	L = (List)malloc(sizeof(struct Node));
+	assert(L != NULL);
+	L->Next = NULL;
+	return L;
 }
