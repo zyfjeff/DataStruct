@@ -1,9 +1,9 @@
 /*
  * =====================================================================================
  *
- *       Filename:  linktable.h
+ *       Filename:  cursor.h
  *
- *    Description:  链表头文件
+ *    Description:  静态链表头文件，也就是游标
  *
  *        Version:  1.0
  *        Created:  03/02/15 12:10:09
@@ -16,11 +16,12 @@
  * =====================================================================================
  */
 
-#ifndef DATASTRUCT_LINKNODE_H_
-#define DATASTRUCT_LINKNODE_H_
+#ifndef CURSOR_H_
+#define CURSOR_H_
 
+#define Spacesize 1024
 struct Node;
-typedef struct Node *PtrToNode;
+typedef int PtrToNode;
 typedef PtrToNode List;
 typedef PtrToNode Position;
 typedef int ElementType;
@@ -31,7 +32,9 @@ struct Node
         Position Next;
 };
 
-void PrintList(List L);
+struct Node CursorSpace[Spacesize];
+
+void InitializeCursorSpace(void);
 List MakeEmpty(List L);
 bool IsEmpty(List L);
 bool IsLast(Position P,List L);

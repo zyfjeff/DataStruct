@@ -18,7 +18,7 @@
 #include <iostream>
 #include <vector>
 
-
+using namespace std;
 bool GetSum(int *data,int length,int key)
 {
 	std::vector<int> back;
@@ -42,8 +42,36 @@ bool GetSum(int *data,int length,int key)
 	return false;
 
 }
+
+bool GetSum2(int *data,int length,int key)
+{
+	int start = 0;
+	int end = length-1;
+	int num1 = data[start];
+	int num2 = data[end];
+	while(start <= end)
+	{
+		if((num1 + num2) == key)
+			break;
+		else if((num1+num2) > key){
+			end--;
+			num2 = data[end];
+		} else {
+			start++;
+			num1 = data[start];
+		}
+	}
+	if (start <= end) {
+		cout << num1<<"+" << num2 << endl;
+		return true;
+	}
+	else
+		return false;
+}
+
 int main()
 {
 		int data[] = {1,2,4,7,11,15};
 		GetSum(data,6,15);
+		GetSum2(data,6,15);
 }

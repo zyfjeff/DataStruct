@@ -15,7 +15,18 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
+using namespace std;
 
+void PrintList(List L)
+{
+	List p = L;
+        while(!IsEmpty(p))
+        {
+                cout << p->Next->Element << endl;
+                p = p->Next;
+        }
+}
 
 bool IsEmpty(List L)
 {

@@ -24,7 +24,7 @@ List Intersect(List A,List B)
 	List head1,head2,head3;
 	head1 = A->Next;
 	head2 = B->Next;
-	MakeEmpty(head3);
+	head3 = MakeEmpty(NULL);
 	Position headpos = head3;
 	while(head1 != NULL && head2 != NULL)
 	{

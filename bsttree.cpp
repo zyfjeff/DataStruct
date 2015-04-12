@@ -118,6 +118,7 @@ SearchTree Insert(ElementType X,SearchTree T)
 
 /*
  * 	删除节点的几种情况:
+ * 	删除的节点不存在
  * 	删除节点是叶子节点-->直接删除
  * 	删除节点是有两个儿子节点-->替换为其右子树最小元素的值，并递归删除右子树的最小元素
  * 	删除节点有一个儿子节点-->让其父节点指向其儿子节点即可
@@ -127,20 +128,20 @@ SearchTree Insert(ElementType X,SearchTree T)
 SearchTree Delete(ElementType X,SearchTree T)
 {
 	Position TmpCell;
-	if (T == NULL) {
+	if (T == NULL) {  //不存在 
 		cout << "Element not found" << endl;
 		return T;
 	}else if (X < T->Element) {
-		
+	
 		T->Left = Delete(X,T->Left);
 	}else if (X > T->Element) {
 		
 		T->Right = Delete(X,T->Right);
-	}else if (T->Left && T->Right) {	
+	}else if (T->Left && T->Right) { 	
 		//不是叶子节点
 		TmpCell = FindMin(T->Right);//找到右子树最小元素
 		T->Element = TmpCell->Element;  //将其设置为右子树的最小元素
-		T->Right = Delete(T->Element,T->Right); 
+		T->Right = Delete(T->Element,T->Right);
 	}else {
 		
 		TmpCell = T;
